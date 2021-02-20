@@ -14,7 +14,7 @@ try:
     browser.get(link)
     time.sleep(5)
 
-    #browser.WebDriverWait(browser, 5).until(EC.presence_of_element_located(By.CSS_SELECTOR, "q"), message="not_elem")
+    browser.WebDriverWait(browser, 5).until(EC.presence_of_element_located(By.CSS_SELECTOR, "q"), message="not_elem")
     number_of_prod = browser.find_element_by_css_selector("q")
     print(number_of_prod)
     print(number_of_prod.text)
