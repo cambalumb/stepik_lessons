@@ -16,8 +16,9 @@ class TestMainPage:
         page.Open()
 
         page.go_to_login_page()
-        print(browser.current_url)
+
         login_page = LoginPage(browser, browser.current_url)
+
         login_page.should_be_login_page()
 
 

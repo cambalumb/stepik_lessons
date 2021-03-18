@@ -22,6 +22,8 @@ class TestProductPage:
         page = ProductPage(browser, link)
         page.Open()
 
+        page.get_class_properties()
+
         page.should_be_product_page()
 
         page.add_to_basket()
@@ -60,6 +62,7 @@ def guest_can_go_to_login_page(browser):
     page.go_to_login_page()
 
     login_page = LoginPage(browser, browser.current_url)
+
     login_page.should_be_login_page()
 
 
@@ -69,7 +72,7 @@ class TestUserAddToBasketFromProductPage:
         link = 'http://selenium1py.pythonanywhere.com/'
         email = str(time.time()) + "@email.org"
         passw = 'sdt6789Gh9F654'
-        print('fixture')
+
         guest_can_go_to_login_page(browser)
 
         browser.find_element(*RegisterPageLocators.REGISTER_EMAIL).send_keys(email)
@@ -78,25 +81,28 @@ class TestUserAddToBasketFromProductPage:
 
         browser.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
 
+    @pytest.mark.xfail
     def test_user_cant_see_success_message_after_adding_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
 
         page = ProductPage(browser, link)
         page.Open()
 
-        # page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=5)
+        page.get_class_properties()
 
         page.should_be_product_page()
 
         page.add_to_basket()
 
         assert page.is_not_element_present(*AlertProductPageLocators.ALERT_SUCCESS,
-                                           timeout=4) == True, "Success alert is presence"
+                                           timeout=4) == True, "Success alert is not presence"
 
     def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
         page = ProductPage(browser, link)
         page.Open()
+
+        page.get_class_properties()
 
         page.should_be_product_page()
 

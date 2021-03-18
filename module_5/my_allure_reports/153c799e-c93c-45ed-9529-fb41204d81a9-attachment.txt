@@ -1,0 +1,3 @@
+product was added to the basket
+
+quit browser..

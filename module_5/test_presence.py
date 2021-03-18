@@ -1,10 +1,11 @@
 from .pages.locators import AlertProductPageLocators
 from .pages.product_page import ProductPage
-from .pages.locators import ProductPageLocators
+import pytest
 
 class TestPresence:
+    @pytest.mark.xfail
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
-        #link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
         try:
             page = ProductPage(browser, link)
             page.Open()
@@ -23,19 +24,18 @@ class TestPresence:
 
     def test_guest_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
-        try:
-            page = ProductPage(browser, link)
-            page.Open()
 
-            #page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
+        page = ProductPage(browser, link)
+        page.Open()
 
-            page.should_be_product_page()
+        #page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
 
-            assert page.is_not_element_present(*AlertProductPageLocators.ALERT_SUCCESS,
+        page.should_be_product_page()
+
+        assert page.is_not_element_present(*AlertProductPageLocators.ALERT_SUCCESS,
                                                timeout=4) == True, "Success alert is presence"
-        finally:
-            print("over")
 
+    @pytest.mark.xfail
     def test_message_disappeared_after_adding_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
         try:
