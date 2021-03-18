@@ -8,13 +8,18 @@ class TestMainPage:
     def test_guest_should_be_login_link(self, browser):
         page = MainPage(browser, link)
         page.Open()
+
         page.should_be_login_link()
 
     def test_guest_can_go_to_login_page(self, browser):
         page = MainPage(browser, link)
         page.Open()
+
         page.go_to_login_page()
+        print(browser.current_url)
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_page()
+
+
 
 

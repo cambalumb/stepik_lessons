@@ -22,7 +22,7 @@ class ProductPage(BasePage):
         print(self.product_name)
 
         assert self.browser.current_url.find(
-            self.url_product_name) > -1, 'current productpage url is not correct'
+            self.url_product_name) > -1, f'current productpage url is not correct {self.browser.current_url}'
 
     def should_be_basket_button(self):
         try:
@@ -69,3 +69,4 @@ class ProductPage(BasePage):
         except NoSuchElementException:
             return False
         assert alert_prod_price[pos1:pos2] == self.product_price, f'your prod name is {alert_prod_price[pos1:pos2]}'
+
