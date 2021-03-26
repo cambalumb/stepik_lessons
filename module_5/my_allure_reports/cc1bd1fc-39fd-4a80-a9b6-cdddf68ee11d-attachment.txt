@@ -1,6 +1,0 @@
-product was added to the basket
-No second alert presented
-basket £19.99
-product £19.99
-
-quit browser..

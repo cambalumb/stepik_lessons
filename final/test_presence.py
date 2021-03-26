@@ -2,6 +2,7 @@ from .pages.locators import AlertProductPageLocators
 from .pages.product_page import ProductPage
 import pytest
 
+
 class TestPresence:
     @pytest.mark.xfail
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
@@ -10,7 +11,7 @@ class TestPresence:
             page = ProductPage(browser, link)
             page.Open()
 
-            #page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=5)
+            # page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=5)
 
             page.should_be_product_page()
 
@@ -28,12 +29,12 @@ class TestPresence:
         page = ProductPage(browser, link)
         page.Open()
 
-        #page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
+        # page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
 
         page.should_be_product_page()
 
         assert page.is_not_element_present(*AlertProductPageLocators.ALERT_SUCCESS,
-                                               timeout=4) == True, "Success alert is presence"
+                                           timeout=4) == True, "Success alert is presence"
 
     @pytest.mark.xfail
     def test_message_disappeared_after_adding_product_to_basket(self, browser):
@@ -42,7 +43,7 @@ class TestPresence:
             page = ProductPage(browser, link)
             page.Open()
 
-            #page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
+            # page.is_not_element_present(*ProductPageLocators.PRODUCT_NAME, timeout=4)
 
             page.should_be_product_page()
 
@@ -53,4 +54,3 @@ class TestPresence:
 
         finally:
             print("over")
-

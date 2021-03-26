@@ -1,5 +1,0 @@
-#X
-//input[@name="Y-name"]
-.Z-class
-//input[@phattr]
-//input[@class="form-control second Address"]

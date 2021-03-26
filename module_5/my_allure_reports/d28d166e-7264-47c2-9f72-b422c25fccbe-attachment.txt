@@ -1,7 +1,0 @@
-product was added to the basket
-No second alert presented
-basket £19.99
-product £19.99
-page is http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6
-
-quit browser..
